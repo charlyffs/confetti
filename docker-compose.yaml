@@ -1,0 +1,27 @@
+version: "3"
+services:
+  # front:
+  #   image: confetti-front
+  #   ports:
+  #     - 8080:8080
+
+  api:
+    image: confetti-api:latest
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    volumes:
+      - ./api/:/usr/src/app/
+      - .env:/usr/src/app/.env
+
+  db:
+    image: confetti-db:latest
+    hostname: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      # - ./database/confetti-dump.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./db-data/:/var/lib/postgresql/data/
+    env_file:
+      - .env
