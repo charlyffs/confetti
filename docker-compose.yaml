@@ -6,17 +6,21 @@ services:
   #     - 8080:8080
 
   api:
-    image: confetti-api:latest
-    build:
-      context: ./api
-      dockerfile: Dockerfile
+    image: node:lts-alpine
+    working_dir: /usr/src/api
+    expose:
+      - 5000
     ports:
       - ${NODE_PORT}:${NODE_PORT}
     depends_on:
       - db
     volumes:
-      - ./api/:/usr/src/app/
+      - ./api/:/usr/src/api/
       - .env:/usr/src/app/.env
+    entrypoint:
+      - npm
+      - run
+      - dev
     env_file:
       - .env
 
