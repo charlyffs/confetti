@@ -1,5 +1,5 @@
 # Confetti
-Event venue managing software. Using PostgreSQL, Express.js and Next.js
+Event venue managing software. Using Next.js, Express.js and PostgreSQL
 
 ## Quick-Start guide:
 - `cd` into api folder and run `npm i`.
@@ -7,7 +7,6 @@ Event venue managing software. Using PostgreSQL, Express.js and Next.js
 - Run `docker-compose up`.
 
 ## Troubleshooting
-- If api fails the first time, run `docker pull node:alpine`.
 - If the database gets corrupted or is otherwise not working, delete the db-data folder to reinitialize it.
 
 # Dependencies
