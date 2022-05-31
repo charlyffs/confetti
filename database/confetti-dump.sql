@@ -23,7 +23,7 @@ SET row_security = off;
 CREATE DATABASE confetti WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
 
 
-ALTER DATABASE confetti OWNER TO charly;
+
 
 \connect confetti
 
@@ -65,7 +65,7 @@ CREATE PROCEDURE public.addproduct(IN p_name character varying, IN p_unitprice m
     $$;
 
 
-ALTER PROCEDURE public.addproduct(IN p_name character varying, IN p_unitprice money) OWNER TO charly;
+
 
 --
 -- Name: addproductchange(integer, character, integer); Type: PROCEDURE; Schema: public; Owner: charly
@@ -80,7 +80,7 @@ CREATE PROCEDURE public.addproductchange(IN p_pid integer, IN p_type character, 
     $$;
 
 
-ALTER PROCEDURE public.addproductchange(IN p_pid integer, IN p_type character, IN p_qty integer) OWNER TO charly;
+
 
 --
 -- Name: addreservation(integer, integer, date); Type: PROCEDURE; Schema: public; Owner: charly
@@ -95,7 +95,7 @@ end
 $$;
 
 
-ALTER PROCEDURE public.addreservation(IN p_employeeid integer, IN p_clientid integer, IN p_eventdate date) OWNER TO charly;
+
 
 --
 -- Name: addreservation(integer, integer, date, integer); Type: PROCEDURE; Schema: public; Owner: charly
@@ -110,7 +110,7 @@ end
 $$;
 
 
-ALTER PROCEDURE public.addreservation(IN p_employeeid integer, IN p_clientid integer, IN p_eventdate date, IN p_packageid integer) OWNER TO charly;
+
 
 --
 -- Name: adduser(character varying, character varying, integer); Type: PROCEDURE; Schema: public; Owner: charly
@@ -136,7 +136,7 @@ end
 $_$;
 
 
-ALTER PROCEDURE public.adduser(IN p_username character varying, IN p_password character varying, IN p_roleid integer) OWNER TO charly;
+
 
 --
 -- Name: checkcredentials(character varying, character varying); Type: FUNCTION; Schema: public; Owner: charly
@@ -164,7 +164,7 @@ end
 $$;
 
 
-ALTER FUNCTION public.checkcredentials(p_username character varying, p_password character varying) OWNER TO charly;
+
 
 --
 -- Name: tr_productchange_ai(); Type: FUNCTION; Schema: public; Owner: charly
@@ -188,7 +188,7 @@ declare v_change integer;
 $$;
 
 
-ALTER FUNCTION public.tr_productchange_ai() OWNER TO charly;
+
 
 --
 -- Name: tr_productchange_bi(); Type: FUNCTION; Schema: public; Owner: charly
@@ -214,7 +214,7 @@ declare v_qty integer;
 $$;
 
 
-ALTER FUNCTION public.tr_productchange_bi() OWNER TO charly;
+
 
 --
 -- Name: tr_reservation_bi(); Type: FUNCTION; Schema: public; Owner: charly
@@ -233,7 +233,7 @@ CREATE FUNCTION public.tr_reservation_bi() RETURNS trigger
     $$;
 
 
-ALTER FUNCTION public.tr_reservation_bi() OWNER TO charly;
+
 
 --
 -- Name: tr_reservation_service_ai(); Type: FUNCTION; Schema: public; Owner: charly
@@ -251,7 +251,7 @@ end
 $$;
 
 
-ALTER FUNCTION public.tr_reservation_service_ai() OWNER TO charly;
+
 
 --
 -- Name: tr_reservationchange_ai(); Type: FUNCTION; Schema: public; Owner: charly
@@ -271,7 +271,7 @@ end
 $$;
 
 
-ALTER FUNCTION public.tr_reservationchange_ai() OWNER TO charly;
+
 
 --
 -- Name: tr_reservationchange_bi(); Type: FUNCTION; Schema: public; Owner: charly
@@ -290,7 +290,7 @@ end
 $$;
 
 
-ALTER FUNCTION public.tr_reservationchange_bi() OWNER TO charly;
+
 
 --
 -- Name: tr_service_ai(); Type: FUNCTION; Schema: public; Owner: charly
@@ -308,7 +308,7 @@ end
 $$;
 
 
-ALTER FUNCTION public.tr_service_ai() OWNER TO charly;
+
 
 SET default_tablespace = '';
 
@@ -326,7 +326,7 @@ CREATE TABLE public.client (
 );
 
 
-ALTER TABLE public.client OWNER TO charly;
+
 
 --
 -- Name: client_clientid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -341,7 +341,7 @@ CREATE SEQUENCE public.client_clientid_seq
     CACHE 1;
 
 
-ALTER TABLE public.client_clientid_seq OWNER TO charly;
+
 
 --
 -- Name: client_clientid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -363,7 +363,7 @@ CREATE TABLE public.employee (
 );
 
 
-ALTER TABLE public.employee OWNER TO charly;
+
 
 --
 -- Name: employee_employeeid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -378,7 +378,7 @@ CREATE SEQUENCE public.employee_employeeid_seq
     CACHE 1;
 
 
-ALTER TABLE public.employee_employeeid_seq OWNER TO charly;
+
 
 --
 -- Name: employee_employeeid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -399,7 +399,7 @@ CREATE TABLE public.package (
 );
 
 
-ALTER TABLE public.package OWNER TO charly;
+
 
 --
 -- Name: package_packageid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -414,7 +414,7 @@ CREATE SEQUENCE public.package_packageid_seq
     CACHE 1;
 
 
-ALTER TABLE public.package_packageid_seq OWNER TO charly;
+
 
 --
 -- Name: package_packageid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -434,7 +434,7 @@ CREATE TABLE public.package_service (
 );
 
 
-ALTER TABLE public.package_service OWNER TO charly;
+
 
 --
 -- Name: payment; Type: TABLE; Schema: public; Owner: charly
@@ -449,7 +449,7 @@ CREATE TABLE public.payment (
 );
 
 
-ALTER TABLE public.payment OWNER TO charly;
+
 
 --
 -- Name: payment_paymentid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -464,7 +464,7 @@ CREATE SEQUENCE public.payment_paymentid_seq
     CACHE 1;
 
 
-ALTER TABLE public.payment_paymentid_seq OWNER TO charly;
+
 
 --
 -- Name: payment_paymentid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -485,7 +485,7 @@ CREATE TABLE public.product (
 );
 
 
-ALTER TABLE public.product OWNER TO charly;
+
 
 --
 -- Name: product_productid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -500,7 +500,7 @@ CREATE SEQUENCE public.product_productid_seq
     CACHE 1;
 
 
-ALTER TABLE public.product_productid_seq OWNER TO charly;
+
 
 --
 -- Name: product_productid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -524,7 +524,7 @@ CREATE TABLE public.productchange (
 );
 
 
-ALTER TABLE public.productchange OWNER TO charly;
+
 
 --
 -- Name: productchange_changeid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -539,7 +539,7 @@ CREATE SEQUENCE public.productchange_changeid_seq
     CACHE 1;
 
 
-ALTER TABLE public.productchange_changeid_seq OWNER TO charly;
+
 
 --
 -- Name: productchange_changeid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -563,7 +563,7 @@ CREATE TABLE public.reservation (
 );
 
 
-ALTER TABLE public.reservation OWNER TO charly;
+
 
 --
 -- Name: reservation_reservationid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -578,7 +578,7 @@ CREATE SEQUENCE public.reservation_reservationid_seq
     CACHE 1;
 
 
-ALTER TABLE public.reservation_reservationid_seq OWNER TO charly;
+
 
 --
 -- Name: reservation_reservationid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -598,7 +598,7 @@ CREATE TABLE public.reservation_service (
 );
 
 
-ALTER TABLE public.reservation_service OWNER TO charly;
+
 
 --
 -- Name: reservationchange; Type: TABLE; Schema: public; Owner: charly
@@ -614,7 +614,7 @@ CREATE TABLE public.reservationchange (
 );
 
 
-ALTER TABLE public.reservationchange OWNER TO charly;
+
 
 --
 -- Name: reservationchange_changeid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -629,7 +629,7 @@ CREATE SEQUENCE public.reservationchange_changeid_seq
     CACHE 1;
 
 
-ALTER TABLE public.reservationchange_changeid_seq OWNER TO charly;
+
 
 --
 -- Name: reservationchange_changeid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -649,7 +649,7 @@ CREATE TABLE public.role (
 );
 
 
-ALTER TABLE public.role OWNER TO charly;
+
 
 --
 -- Name: role_roleid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -664,7 +664,7 @@ CREATE SEQUENCE public.role_roleid_seq
     CACHE 1;
 
 
-ALTER TABLE public.role_roleid_seq OWNER TO charly;
+
 
 --
 -- Name: role_roleid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly
@@ -686,7 +686,7 @@ CREATE TABLE public.service (
 );
 
 
-ALTER TABLE public.service OWNER TO charly;
+
 
 --
 -- Name: service_serviceid_seq; Type: SEQUENCE; Schema: public; Owner: charly
@@ -701,7 +701,7 @@ CREATE SEQUENCE public.service_serviceid_seq
     CACHE 1;
 
 
-ALTER TABLE public.service_serviceid_seq OWNER TO charly;
+
 
 --
 -- Name: service_serviceid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: charly

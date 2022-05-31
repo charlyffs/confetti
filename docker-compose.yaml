@@ -16,12 +16,12 @@ services:
       - .env:/usr/src/app/.env
 
   db:
-    image: confetti-db:latest
+    image: postgres:alpine
     hostname: postgres
     ports:
       - 5432:5432
     volumes:
-      # - ./database/confetti-dump.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./database/confetti-dump.sql:/docker-entrypoint-initdb.d/db.sql
       - ./db-data/:/var/lib/postgresql/data/
     env_file:
       - .env
