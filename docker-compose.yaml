@@ -1,21 +1,21 @@
 version: "3"
 services:
-  front:
-    image: node:lts-alpine
-    working_dir: /usr/src/app
-    expose:
-      - ${NEXT_PORT}
-    ports:
-      - ${NEXT_PORT}:${NEXT_PORT}
-    volumes:
-      - ./front/:/usr/src/front/
-      - .env:/usr/src/front/.env
-    entrypoint:
-      - npm
-      - run
-      - dev
-    env_file:
-      - .env
+  # front:
+  #   image: node:lts-alpine
+  #   working_dir: /usr/src/app
+  #   expose:
+  #     - ${NEXT_PORT}
+  #   ports:
+  #     - ${NEXT_PORT}:${NEXT_PORT}
+  #   volumes:
+  #     - ./front/:/usr/src/front/
+  #     - .env:/usr/src/front/.env
+  #   entrypoint:
+  #     - npm
+  #     - run
+  #     - dev
+  #   env_file:
+  #     - .env
 
   api:
     image: node:lts-alpine
