@@ -7,19 +7,24 @@ services:
 
   api:
     image: confetti-api:latest
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     ports:
-      - 5000:5000
+      - ${NODE_PORT}:${NODE_PORT}
     depends_on:
       - db
     volumes:
       - ./api/:/usr/src/app/
       - .env:/usr/src/app/.env
+    env_file:
+      - .env
 
   db:
     image: postgres:alpine
     hostname: postgres
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
     volumes:
       - ./database/confetti-dump.sql:/docker-entrypoint-initdb.d/db.sql
       - ./db-data/:/var/lib/postgresql/data/
