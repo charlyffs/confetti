@@ -19,6 +19,7 @@ services:
 
   api:
     image: node:lts-alpine
+    hostname: confetti-api
     working_dir: /usr/src/api
     expose:
       - ${NODE_PORT}
