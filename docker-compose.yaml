@@ -7,6 +7,8 @@ services:
       - ${NEXT_PORT}
     ports:
       - ${NEXT_PORT}:${NEXT_PORT}
+    networks:
+      - service-layer
     volumes:
       - ./front/:/usr/src/front/
       - .env:/usr/src/front/.env
@@ -21,10 +23,10 @@ services:
     image: node:lts-alpine
     hostname: confetti-api
     working_dir: /usr/src/api
-    expose:
-      - ${NODE_PORT}
     ports:
       - ${NODE_PORT}:${NODE_PORT}
+    networks:
+      - service-layer
     depends_on:
       - db
     volumes:
@@ -42,8 +44,15 @@ services:
     hostname: postgres
     ports:
       - ${POSTGRES_PORT}:5432
+    networks:
+      - service-layer
     volumes:
       - ./database/confetti-dump.sql:/docker-entrypoint-initdb.d/db.sql
       - ./db-data/:/var/lib/postgresql/data/
     env_file:
       - .env
+
+networks:
+  service-layer:
+    external: false
+    name: service-layer
