@@ -8,7 +8,11 @@ module.exports = {
   ],
   important: "#__next",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "slate-900",
+      },
+    },
   },
   plugins: [],
 };

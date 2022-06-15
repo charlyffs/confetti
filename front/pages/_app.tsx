@@ -7,9 +7,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StyledEngineProvider injectFirst>
       <CssBaseline />
-      <div className="absolute inset-0 bg-slate-900">
-
-      <Component {...pageProps} />
+      <div className="absolute inset-0 bg-primary">
+        <Component {...pageProps} />
       </div>
     </StyledEngineProvider>
   );
