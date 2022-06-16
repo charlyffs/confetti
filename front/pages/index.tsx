@@ -1,11 +1,14 @@
 import axios from "axios";
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import Button from "@mui/material/Button";
-import { User } from "../models/User";
+import type { User } from "../models/User";
+import LoginCard from "../components/loginCard";
 
-const HomeNextPage = ({ users }: IndexProps) => {
-  console.log(users)
+type props = {
+  users: User[];
+};
+
+export const HomeNextPage = (props: props) => {
   return (
     <div>
       <Head>
@@ -15,13 +18,10 @@ const HomeNextPage = ({ users }: IndexProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="text-center text-primary font-normal text-6xl">
-          Confetti
-        </h1>
-        <p>{JSON.stringify(users, null, 4)}</p>
-        <Button className="block mx-auto" variant="contained" color="primary">
-          Click Me
-        </Button>
+        <h1 className="text-center text-white font-normal text-6xl">Title</h1>
+        <p className="text-white">{JSON.stringify(props.users, null, 4)}</p>
+        <p className="text-white">{props.users[0].employeeid}</p>
+        <LoginCard />
       </main>
 
       <footer></footer>
@@ -29,34 +29,24 @@ const HomeNextPage = ({ users }: IndexProps) => {
   );
 };
 
-export interface IndexProps {
-  users: User[];
-}
-
-export const getServerSideProps: GetServerSideProps = async (
-  ctx
-) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     console.log("api request");
-    const { data, status } = await axios.get(
-      'http://confetti-api:5000/users', {
-      headers: {
-          Accept: "application/json",
-        },
-      }
-    );
-    console.log(data, status);
+    const {data, status}= await axios.get("http://confetti-api:5000/users");
+    const users = data
+    console.log('data: ')
+    console.log(users);
     return {
       props: {
-        data,
+        users,
       },
     };
   } catch (err) {
-    console.log(err);
+    console.log('Error with status code: ' + status);
     return {
       props: {
-        data: 'err'
-      }
+        users: "",
+      },
     };
   }
 };

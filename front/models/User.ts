@@ -1,7 +1,7 @@
-export interface User {
-    employeeId: number;
-    roleId: number;
+export type User = {
+    employeeid: number;
+    roleid: number;
     username: string;
-    passwordHash: string;
+    passwordhash: string;
     salt: string;
 }
